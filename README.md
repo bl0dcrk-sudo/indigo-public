@@ -18,6 +18,12 @@ Features:
 
 2. Indigo-*.zip (see releases page)
 
+## Releases
+
+Here:
+
+> https://github.com/bl0dcrk-sudo/indigo-public/releases
+
 ## How to play
 
 1. Download Indigo-*.zip
