@@ -1,6 +1,8 @@
 ## Intro
 
-This repo contains port of "Need for Speed 2 SE".
+Indigo - port of Need for Speed 2 SE made in .NET/mono.
+
+![Gameplay 01](images/Gameplay_01.png)
 
 Port is made in .NET/mono game, so potentially it can run on most of the platforms.
 
