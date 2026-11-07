@@ -4,7 +4,7 @@ This repo contains port of Need of Speed 2 SE made in .NET/mono game.
 
 Features:
 
-1. Most of the features from the original game (same psyhics etc.)
+1. Most of the features from the original game (same physics etc.)
 
 2. Enhanced graphics.
 
@@ -16,7 +16,9 @@ Features:
 
 1. Original game
 
-2. Indigo-*.zip (see releases page)
+2. Windows
+
+3. Indigo-*.zip (see releases page)
 
 ## Releases
 
