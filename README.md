@@ -8,7 +8,7 @@ I tested it on:
 - Windows
 - Steam Deck (via wine)
 
-# Features
+## Features
 
 1. Most of the features from the original game.
 2. "Byte to byte" physics, game behaves same as original.
@@ -22,7 +22,7 @@ I tested it on:
 2. Windows
 3. Indigo-*.zip (see releases page)
 
-## Releases
+## Download
 
 Here:
 
