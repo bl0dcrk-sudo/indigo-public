@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Platform-independent touch controls: layout, multitouch mapping, software overlay raster. No MonoGame types,
+       so the same code is used by NFS.Desktop (tests, the touch option) and NFS.Android. -->
+  <ItemGroup>
+    <ProjectReference Include="..\NFS.Render\NFS.Render.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

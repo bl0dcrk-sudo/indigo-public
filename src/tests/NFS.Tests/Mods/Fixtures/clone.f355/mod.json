@@ -1,0 +1,7 @@
+{
+  "id": "clone.f355",
+  "version": "1.0.0",
+  "api": "^1.0",
+  "kind": "data",
+  "capabilities": ["cars"]
+}

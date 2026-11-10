@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "f355clone",
+  "names": { "pl": "F355 klon", "en": "F355" },
+  "class": "A",
+  "traits": { "abs": true },
+  "engineBank": "tr355",
+  "model": "cars/f355clone/f355clone.glb",
+  "raw": { "specs": "cars/f355clone/specs.dat", "ai": "cars/f355clone/ai.dat" }
+}

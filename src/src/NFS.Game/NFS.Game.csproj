@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\NFS.Data\NFS.Data.csproj" />
+    <ProjectReference Include="..\NFS.Core\NFS.Core.csproj" />
+    <ProjectReference Include="..\NFS.Render\NFS.Render.csproj" />
+    <ProjectReference Include="..\NFS.Audio\NFS.Audio.csproj" />
+    <ProjectReference Include="../NFS.ModApi/NFS.ModApi.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

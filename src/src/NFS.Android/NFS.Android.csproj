@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Android host (MonoGame.Framework.Android). NOT part of NFS2SE.sln: it needs the .NET "android" workload, Android SDK
+       and JDK 17; the main solution [ref:3362]
+       builds and tests without them. Own solution: src/NFS2SE.Android.sln.
+       The game code is shared by linking: every NFS.Desktop source file except Program.cs is compiled into this assembly
+       (MonoGame has the same Microsoft.Xna.Framework API on both platforms); platform differences are in MainActivity
+       and the few OperatingSystem.IsAndroid() branches of Game1. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+    <ApplicationId>com.indigo.nfs2se</ApplicationId>
+    <ApplicationTitle>Indigo (NFS2SE)</ApplicationTitle>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>$(SharedVersion)</ApplicationDisplayVersion>
+    <AssemblyName>Indigo.Android</AssemblyName>
+    <RootNamespace>NFS.Desktop</RootNamespace>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <RuntimeIdentifier>android-arm64</RuntimeIdentifier>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MonoGame 3.8.6 ships net8.0-android34.0 assets; a net10.0-android app can consume them. If the build or the app
+         trips on that, see the "risk" notes in the Android task before downgrading the TFM. -->
+    <PackageReference Include="MonoGame.Framework.Android" Version="3.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NFS.Data\NFS.Data.csproj" />
+    <ProjectReference Include="..\NFS.Core\NFS.Core.csproj" />
+    <ProjectReference Include="..\NFS.Render\NFS.Render.csproj" />
+    <ProjectReference Include="..\NFS.Audio\NFS.Audio.csproj" />
+    <ProjectReference Include="..\NFS.Game\NFS.Game.csproj" />
+    <ProjectReference Include="..\NFS.Net\NFS.Net.csproj" />
+    <ProjectReference Include="..\NFS.Touch\NFS.Touch.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="*.cs" />
+    <Compile Include="..\NFS.Desktop\*.cs" Exclude="..\NFS.Desktop\Program.cs" LinkBase="Desktop" />
+  </ItemGroup>
+
+</Project>

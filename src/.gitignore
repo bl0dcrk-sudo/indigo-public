@@ -1,0 +1,8 @@
+# build output (also when only src/ is copied to another repo)
+bin/
+obj/
+out/
+TestResults/
+.vs/
+*.user
+*.log

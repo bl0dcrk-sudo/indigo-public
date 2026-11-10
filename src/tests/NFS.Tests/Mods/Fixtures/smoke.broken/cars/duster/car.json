@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "duster",
+  "names": { "pl": "Duster", "en": "Duster" },
+  "manufacturer": "Dacia",
+  "year": 2010,
+  "class": "C",
+  "traits": { "abs": true },
+  "engineBank": "must",
+  "model": "cars/duster/duster.glb",
+  "physics": {
+    "massKg": 0,
+    "powerKw": 110,
+    "powerRpm": 5500,
+    "torqueNm": 250,
+    "torqueRpm": 2000,
+    "redlineRpm": 6000,
+    "gearRatios": [3.73, 2.05, 1.39, 1.03, 0.82, 0.69],
+    "finalDrive": 4.13,
+    "topSpeedKmh": 180,
+    "drive": "front",
+    "wheelbaseM": 2.67
+  }
+}

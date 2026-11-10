@@ -1,0 +1,209 @@
+sealed class NFS.ModApi.CarColor : System.IEquatable<NFS.ModApi.CarColor>
+  System.Boolean Equals(NFS.ModApi.CarColor other)
+  System.Boolean Equals(System.Object obj)
+  System.Byte B { get; init; }
+  System.Byte G { get; init; }
+  System.Byte R { get; init; }
+  System.Collections.Generic.IReadOnlyDictionary<System.String, System.String> Names { get; init; }
+  System.Int32 GetHashCode()
+  System.String Name(System.String lang)
+  System.String ToString()
+  System.Void Deconstruct(out System.Collections.Generic.IReadOnlyDictionary<System.String, System.String> Names, out System.Byte R, out System.Byte G, out System.Byte B)
+  ctor(System.Collections.Generic.IReadOnlyDictionary<System.String, System.String> Names, System.Byte R, System.Byte G, System.Byte B)
+sealed class NFS.ModApi.CarDefinition : System.IEquatable<NFS.ModApi.CarDefinition>
+  NFS.ModApi.CarDimensions Dimensions { get; init; }
+  NFS.ModApi.CarKey Key { get; init; }
+  NFS.ModApi.CarPhysics Physics { get; init; }
+  NFS.ModApi.CarTraits Traits { get; init; }
+  System.Boolean Equals(NFS.ModApi.CarDefinition other)
+  System.Boolean Equals(System.Object obj)
+  System.Collections.Generic.IReadOnlyDictionary<System.String, System.String> Descriptions { get; init; }
+  System.Collections.Generic.IReadOnlyList<NFS.ModApi.CarColor> Colors { get; init; }
+  System.Collections.Generic.IReadOnlyList<System.String> PaintMaterials { get; init; }
+  System.Int32 GetHashCode()
+  System.Int32? LegacyIndex { get; init; }
+  System.Int32? Year { get; init; }
+  System.String DisplayName { get; init; }
+  System.String Manufacturer { get; init; }
+  System.String ModelPath { get; init; }
+  System.String ToString()
+  System.Void Deconstruct(out NFS.ModApi.CarKey Key, out System.String DisplayName, out System.Int32? LegacyIndex, out NFS.ModApi.CarPhysics Physics, out NFS.ModApi.CarTraits Traits)
+  const System.Int32 SchemaVersion = 1
+  ctor(NFS.ModApi.CarKey Key, System.String DisplayName, System.Int32? LegacyIndex, NFS.ModApi.CarPhysics Physics, NFS.ModApi.CarTraits Traits)
+sealed class NFS.ModApi.CarDimensions : System.IEquatable<NFS.ModApi.CarDimensions>
+  System.Boolean Equals(NFS.ModApi.CarDimensions other)
+  System.Boolean Equals(System.Object obj)
+  System.Double HeightM { get; init; }
+  System.Double LengthM { get; init; }
+  System.Double WidthM { get; init; }
+  System.Int32 GetHashCode()
+  System.String ToString()
+  System.Void Deconstruct(out System.Double LengthM, out System.Double WidthM, out System.Double HeightM)
+  ctor(System.Double LengthM, System.Double WidthM, System.Double HeightM)
+enum NFS.ModApi.CarDrive : System.IComparable, System.IConvertible, System.IFormattable, System.ISpanFormattable
+  System.Int32 value__
+  const NFS.ModApi.CarDrive All = 2
+  const NFS.ModApi.CarDrive Front = 1
+  const NFS.ModApi.CarDrive Rear = 0
+struct NFS.ModApi.CarKey : System.IEquatable<NFS.ModApi.CarKey>
+  System.Boolean Equals(NFS.ModApi.CarKey other)
+  System.Boolean Equals(System.Object obj)
+  System.Boolean IsVanilla { get; }
+  System.Int32 GetHashCode()
+  System.String ToString()
+  System.String Value { get; }
+  const System.String VanillaPrefix = nfs2se/
+  static NFS.ModApi.CarKey Parse(System.String text)
+  static NFS.ModApi.CarKey Vanilla(System.String name)
+  static System.Boolean TryParse(System.String text, out NFS.ModApi.CarKey key)
+abstract class NFS.ModApi.CarPhysics : System.IEquatable<NFS.ModApi.CarPhysics>
+  System.Boolean Equals(NFS.ModApi.CarPhysics other)
+  System.Boolean Equals(System.Object obj)
+  System.Int32 GetHashCode()
+  System.String ToString()
+  ctor()
+  ctor(NFS.ModApi.CarPhysics original)
+enum NFS.ModApi.CarRaceClass : System.IComparable, System.IConvertible, System.IFormattable, System.ISpanFormattable
+  System.Int32 value__
+  const NFS.ModApi.CarRaceClass A = 2
+  const NFS.ModApi.CarRaceClass B = 1
+  const NFS.ModApi.CarRaceClass C = 0
+  const NFS.ModApi.CarRaceClass D = 3
+  const NFS.ModApi.CarRaceClass E = 4
+  const NFS.ModApi.CarRaceClass F = 5
+  const NFS.ModApi.CarRaceClass G = 6
+sealed class NFS.ModApi.CarTraits : System.IEquatable<NFS.ModApi.CarTraits>
+  NFS.ModApi.CarRaceClass RaceClass { get; init; }
+  NFS.ModApi.Cockpit Cockpit { get; init; }
+  NFS.ModApi.EngineBank EngineBank { get; init; }
+  System.Boolean Equals(NFS.ModApi.CarTraits other)
+  System.Boolean Equals(System.Object obj)
+  System.Boolean FullAngleSteer { get; init; }
+  System.Boolean HasAbs { get; init; }
+  System.Boolean RearAeroBoost { get; init; }
+  System.Boolean RearWheelShift { get; init; }
+  System.Boolean SkidMarks { get; init; }
+  System.Boolean SpecialRules0E { get; init; }
+  System.Boolean WheelShift { get; init; }
+  System.Int32 AiTopSpeed { get; init; }
+  System.Int32 BodyMassScale { get; init; }
+  System.Int32 GetHashCode()
+  System.Int32 TrafficPaintVariants { get; init; }
+  System.Int32? BodyMass { get; init; }
+  System.String ToString()
+  ctor()
+struct NFS.ModApi.Cockpit : System.IEquatable<NFS.ModApi.Cockpit>
+  NFS.ModApi.CockpitKind Kind { get; init; }
+  System.Boolean Equals(NFS.ModApi.Cockpit other)
+  System.Boolean Equals(System.Object obj)
+  System.Boolean GearLetters { get; init; }
+  System.Boolean LeftMirror { get; init; }
+  System.Boolean NoBitOverlays { get; init; }
+  System.Boolean Tinted { get; init; }
+  System.Int32 GetHashCode()
+  System.Int32 MirrorOffsetX { get; init; }
+  System.Int32 MirrorOffsetY { get; init; }
+  System.String DashFile { get; init; }
+  System.String ExtraFile { get; init; }
+  System.String ToString()
+  System.Void Deconstruct(out NFS.ModApi.CockpitKind Kind, out System.String DashFile, out System.String ExtraFile, out System.Boolean Tinted, out System.Boolean LeftMirror, out System.Boolean NoBitOverlays, out System.Boolean GearLetters, out System.Int32 MirrorOffsetX, out System.Int32 MirrorOffsetY)
+  ctor(NFS.ModApi.CockpitKind Kind, System.String DashFile, System.String ExtraFile = null, System.Boolean Tinted = False, System.Boolean LeftMirror = False, System.Boolean NoBitOverlays = False, System.Boolean GearLetters = False, System.Int32 MirrorOffsetX = 0, System.Int32 MirrorOffsetY = 0)
+enum NFS.ModApi.CockpitKind : System.IComparable, System.IConvertible, System.IFormattable, System.ISpanFormattable
+  System.Int32 value__
+  const NFS.ModApi.CockpitKind Dash = 1
+  const NFS.ModApi.CockpitKind Digital = 2
+  const NFS.ModApi.CockpitKind None = 0
+struct NFS.ModApi.EngineBank : System.IEquatable<NFS.ModApi.EngineBank>
+  System.Boolean Equals(NFS.ModApi.EngineBank other)
+  System.Boolean Equals(System.Object obj)
+  System.Int32 GetHashCode()
+  System.String Opponent { get; init; }
+  System.String Player { get; init; }
+  System.String Split { get; init; }
+  System.String ToString()
+  System.Void Deconstruct(out System.String Player, out System.String Split, out System.String Opponent)
+  ctor(System.String Player, System.String Split, System.String Opponent)
+interface NFS.ModApi.ICarRegistry
+  System.Boolean TryRegister(NFS.ModApi.CarDefinition car, out System.String error)
+interface NFS.ModApi.IModHost
+  NFS.ModApi.ICarRegistry Cars { get; }
+  NFS.ModApi.ModDiagnostics Diagnostics { get; }
+  System.String ApiVersion { get; }
+static class NFS.ModApi.ModApiInfo
+  const System.String Version = 1.1.0
+sealed class NFS.ModApi.ModDiagnostic : System.IEquatable<NFS.ModApi.ModDiagnostic>
+  NFS.ModApi.ModDiagnosticSeverity Severity { get; init; }
+  System.Boolean Equals(NFS.ModApi.ModDiagnostic other)
+  System.Boolean Equals(System.Object obj)
+  System.Int32 GetHashCode()
+  System.String Message { get; init; }
+  System.String ModId { get; init; }
+  System.String ToString()
+  System.Void Deconstruct(out NFS.ModApi.ModDiagnosticSeverity Severity, out System.String ModId, out System.String Message)
+  ctor(NFS.ModApi.ModDiagnosticSeverity Severity, System.String ModId, System.String Message)
+enum NFS.ModApi.ModDiagnosticSeverity : System.IComparable, System.IConvertible, System.IFormattable, System.ISpanFormattable
+  System.Int32 value__
+  const NFS.ModApi.ModDiagnosticSeverity Error = 1
+  const NFS.ModApi.ModDiagnosticSeverity Warning = 0
+sealed class NFS.ModApi.ModDiagnostics
+  System.Boolean HasErrors { get; }
+  System.Collections.Generic.IReadOnlyList<NFS.ModApi.ModDiagnostic> Entries { get; }
+  System.Void Error(System.String modId, System.String message)
+  System.Void Warning(System.String modId, System.String message)
+  ctor()
+enum NFS.ModApi.ModKind : System.IComparable, System.IConvertible, System.IFormattable, System.ISpanFormattable
+  System.Int32 value__
+  const NFS.ModApi.ModKind Code = 1
+  const NFS.ModApi.ModKind Data = 0
+sealed class NFS.ModApi.ModManifest : System.IEquatable<NFS.ModApi.ModManifest>
+  NFS.ModApi.ModKind Kind { get; init; }
+  System.Boolean Equals(NFS.ModApi.ModManifest other)
+  System.Boolean Equals(System.Object obj)
+  System.Collections.Generic.IReadOnlyList<System.String> Capabilities { get; init; }
+  System.Int32 GetHashCode()
+  System.String ApiRange { get; init; }
+  System.String Id { get; init; }
+  System.String ToString()
+  System.String Version { get; init; }
+  System.Void Deconstruct(out System.String Id, out System.String Version, out System.String ApiRange, out NFS.ModApi.ModKind Kind, out System.Collections.Generic.IReadOnlyList<System.String> Capabilities)
+  ctor(System.String Id, System.String Version, System.String ApiRange, NFS.ModApi.ModKind Kind, System.Collections.Generic.IReadOnlyList<System.String> Capabilities)
+sealed class NFS.ModApi.NoPhysics : NFS.ModApi.CarPhysics, System.IEquatable<NFS.ModApi.CarPhysics>, System.IEquatable<NFS.ModApi.NoPhysics>
+  System.Boolean Equals(NFS.ModApi.CarPhysics other)
+  System.Boolean Equals(NFS.ModApi.NoPhysics other)
+  System.Boolean Equals(System.Object obj)
+  System.Int32 GetHashCode()
+  System.String ToString()
+  ctor()
+sealed class NFS.ModApi.RawPhysics : NFS.ModApi.CarPhysics, System.IEquatable<NFS.ModApi.CarPhysics>, System.IEquatable<NFS.ModApi.RawPhysics>
+  System.Boolean Equals(NFS.ModApi.CarPhysics other)
+  System.Boolean Equals(NFS.ModApi.RawPhysics other)
+  System.Boolean Equals(System.Object obj)
+  System.Int32 GetHashCode()
+  System.ReadOnlyMemory<System.Byte> CarAiModel { get; }
+  System.ReadOnlyMemory<System.Byte> CarSpecs { get; }
+  System.String ToString()
+  const System.Int32 CarAiModelSize = 524
+  const System.Int32 CarSpecsSize = 356
+  ctor(System.Byte[] carSpecs, System.Byte[] carAiModel)
+sealed class NFS.ModApi.SiPhysics : NFS.ModApi.CarPhysics, System.IEquatable<NFS.ModApi.CarPhysics>, System.IEquatable<NFS.ModApi.SiPhysics>
+  NFS.ModApi.CarDrive Drive { get; init; }
+  System.Boolean Equals(NFS.ModApi.CarPhysics other)
+  System.Boolean Equals(NFS.ModApi.SiPhysics other)
+  System.Boolean Equals(System.Object obj)
+  System.Collections.Generic.IReadOnlyList<System.Double> GearRatios { get; init; }
+  System.Double FinalDrive { get; init; }
+  System.Double MassKg { get; init; }
+  System.Double PowerKw { get; init; }
+  System.Double PowerRpm { get; init; }
+  System.Double RedlineRpm { get; init; }
+  System.Double ReverseGearRatio { get; init; }
+  System.Double TopSpeedKmh { get; init; }
+  System.Double TorqueNm { get; init; }
+  System.Double TorqueRpm { get; init; }
+  System.Double WheelRadiusM { get; init; }
+  System.Double WheelbaseM { get; init; }
+  System.Double? BrakeDecelerationMs2 { get; init; }
+  System.Double? TyreGrip { get; init; }
+  System.Int32 GetHashCode()
+  System.String ToString()
+  ctor()

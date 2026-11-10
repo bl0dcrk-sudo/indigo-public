@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<SharedVersion Condition=" '$(SharedVersion)' == '' ">0.4.0</SharedVersion>
+	<!-- <SharedVersion>9.0.0</SharedVersion> -->
+	<AssemblyVersion>$(SharedVersion)</AssemblyVersion>
+	<Version>$(SharedVersion)</Version>
+	<FileVersion>$(SharedVersion)</FileVersion>
+  </PropertyGroup>
+</Project>

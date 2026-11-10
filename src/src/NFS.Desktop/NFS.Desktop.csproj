@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\NFS.Data\NFS.Data.csproj" />
+    <ProjectReference Include="..\NFS.Core\NFS.Core.csproj" />
+    <ProjectReference Include="..\NFS.Render\NFS.Render.csproj" />
+    <ProjectReference Include="..\NFS.Audio\NFS.Audio.csproj" />
+    <ProjectReference Include="..\NFS.Game\NFS.Game.csproj" />
+    <ProjectReference Include="..\NFS.Net\NFS.Net.csproj" />
+    <ProjectReference Include="..\NFS.Touch\NFS.Touch.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="NFS.Desktop.Tests" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- WinExe: no console window when started from Explorer; stdout still works when redirected. -->
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NFS.Desktop</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <AssemblyName>Indigo</AssemblyName>
+  </PropertyGroup>
+
+</Project>
