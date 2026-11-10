@@ -3,6 +3,7 @@ using NFS.Game.Cars;
 using NFS.Game.Mods;
 using NFS.ModApi;
 using NFS.Render;
+using NFS.Tests.Data;
 using Xunit;
 
 namespace NFS.Tests.Render;
@@ -80,7 +81,7 @@ public class GltfPaintTests
         Assert.False(p.Applies("UV_glass_clear"));
     }
 
-    [Fact]
+    [ModFact]
     public void Duster_PaintedBody_DiffersFromUnpaintedBaseline()
     {
         string path = GlbPath();
@@ -95,7 +96,7 @@ public class GltfPaintTests
         Assert.False(orange.SequenceEqual(blue), "two colours gave the same body");
     }
 
-    [Fact]
+    [ModFact]
     public void Duster_NonPaintMaterial_IdenticalForEveryColour()
     {
         string path = GlbPath();
@@ -105,7 +106,7 @@ public class GltfPaintTests
         Assert.True(plain.SequenceEqual(GltfCar.Load(path, paint: BluePaint).Textures[TextureKey(glass)].Rgb));
     }
 
-    [Fact]
+    [ModFact]
     public void Duster_GreyTexels_StayAsTheyAreForEveryColour()
     {
         string path = GlbPath();
@@ -124,7 +125,7 @@ public class GltfPaintTests
         Assert.True(checkedTexels > 0, "the body texture has no grey texels to check");
     }
 
-    [Fact]
+    [ModFact]
     public void Duster_PaintedTexels_TakeTheTargetHue()
     {
         string path = GlbPath();
@@ -147,7 +148,7 @@ public class GltfPaintTests
         Assert.True(blueRb < 0, "blue paint is not bluish");
     }
 
-    [Fact]
+    [ModFact]
     public void Duster_PaintedTexels_KeepRelativeBrightness()
     {
         string path = GlbPath();
@@ -168,7 +169,7 @@ public class GltfPaintTests
         Assert.True(max / min < 1.03, $"brightness ratio not constant: {min:F4}..{max:F4}");
     }
 
-    [Fact]
+    [ModFact]
     public void ModCarModel_ColourIndexIsClampedToTheColourList()
     {
         var car = LoadRepoDusterDefinition();

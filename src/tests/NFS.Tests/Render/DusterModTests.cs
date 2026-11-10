@@ -1,5 +1,6 @@
 using System.Numerics;
 using NFS.Render;
+using NFS.Tests.Data;
 
 namespace NFS.Tests.Render;
 
@@ -31,7 +32,7 @@ public class DusterModTests
     static void Near(float expected, float actual, string what) =>
         Assert.True(MathF.Abs(actual - expected) <= 0.05f * expected, $"{what}: {actual:F3} m, expected {expected} m ± 5%");
 
-    [Fact]
+    [ModFact]
     public void DusterFitsTheTriangleBudget()
     {
         var mesh = Load().Mesh;
@@ -42,7 +43,7 @@ public class DusterModTests
         Assert.Equal(4, mesh.Lods[0].Count(p => p.Motion == CarPartMotion.Wheel));
     }
 
-    [Fact]
+    [ModFact]
     public void DusterHasTheRealCarSize()
     {
         var mesh = Load().Mesh;
@@ -70,7 +71,7 @@ public class DusterModTests
     /// <summary>Scale of the game (openspec modding-api-cars 4.8): the original models are drawn 1 world unit = 1 m (CarMesh.FromGeo: 1/256 m,
     /// CarObj half sizes 1/256 m &lt;&lt; 8 in 16.16), measured by <c>render-car</c>: McLaren F1 LOD0 4.32 m long (real 4.29 m), F355 4.50 (4.25),
     /// LGT1 4.50 (~4.5), Isdera 4.61 (4.7); mean game/real length 1.01. So mod models need no scale factor and the Duster keeps the real ratio.</summary>
-    [Fact]
+    [ModFact]
     public void DusterLengthRelativeToMcLarenMatchesReality()
     {
         const float mcLarenGameLength = 4.32f, mcLarenRealLength = 4.29f, dusterRealLength = 4.34f;

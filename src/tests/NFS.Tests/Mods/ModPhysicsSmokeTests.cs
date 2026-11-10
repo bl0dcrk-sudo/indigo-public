@@ -105,7 +105,7 @@ public sealed class ModPhysicsSmokeTests : IDisposable
         }
     }
 
-    [Fact]
+    [ModFact]
     public void RepoDuster_IsRegisteredWithExpectedTraits()
     {
         var diag = new ModDiagnostics();
@@ -136,7 +136,7 @@ public sealed class ModPhysicsSmokeTests : IDisposable
         yield return ("Vel.Z", car.Vel.Z);
     }
 
-    [Fact]
+    [ModFact]
     public void BrokenCar_IsRejectedWithDiagnosticNamingTheField()
     {
         BuildMod(BrokenModId);

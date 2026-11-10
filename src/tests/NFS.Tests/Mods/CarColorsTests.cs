@@ -3,6 +3,7 @@ using System.Text.Json.Nodes;
 using NFS.Game.Cars;
 using NFS.Game.Mods;
 using NFS.ModApi;
+using NFS.Tests.Data;
 using Xunit;
 
 namespace NFS.Tests.Mods;
@@ -190,7 +191,7 @@ public sealed class CarColorsTests : IDisposable
         Assert.Contains("'paintMaterials'", Error(j));
     }
 
-    [Fact]
+    [ModFact]
     public void RepoDuster_HasSixColoursAndUvBodyPaint()
     {
         string? repoMods = null;
