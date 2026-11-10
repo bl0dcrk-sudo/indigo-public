@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	<SharedVersion Condition=" '$(SharedVersion)' == '' ">0.4.0</SharedVersion>
+	<SharedVersion Condition=" '$(SharedVersion)' == '' ">0.4.1</SharedVersion>
 	<!-- <SharedVersion>9.0.0</SharedVersion> -->
 	<AssemblyVersion>$(SharedVersion)</AssemblyVersion>
 	<Version>$(SharedVersion)</Version>
