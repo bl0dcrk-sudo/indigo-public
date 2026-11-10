@@ -1,0 +1,85 @@
+name: Release
+
+# Pushing a version tag (e.g. v0.4.0) builds the port, runs the tests, packages the game and the
+# session server and publishes a GitHub release with the zips. A manual run builds and keeps the
+# zips as a workflow artifact only (no release).
+# The original game data is not in the repository, so the tests that need it skip; everything else runs.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # creating the release
+
+env:
+  DOTNET_NOLOGO: 'true'
+  DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 'true'
+
+jobs:
+  build:
+    name: Build, test, package and release
+    # windows-latest: the game package is win-x64; the linux server packages are cross-published from here.
+    runs-on: windows-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Recordings of the original (src/resources/*.zip) are Git LFS files; without them the tests
+          # that need a recording skip with a message.
+          lfs: false
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('src/**/*.csproj', 'src/Directory.Build.props', 'src/NFS2SE.sln') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      # The version comes from src/Directory.Build.props; a tag must name the same version (v0.4.0 = 0.4.0).
+      - name: Read version
+        id: version
+        shell: pwsh
+        run: |
+          $props = 'src/Directory.Build.props'
+          $version = ([xml](Get-Content $props -Raw)).SelectSingleNode('//SharedVersion').InnerText.Trim()
+          if ([string]::IsNullOrWhiteSpace($version)) { throw "SharedVersion not found in $props" }
+          if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -ne "v$version") {
+            throw "Tag $env:GITHUB_REF_NAME does not match SharedVersion $version in $props (expected v$version)"
+          }
+          "version=$version" >> $env:GITHUB_OUTPUT
+          Write-Host "Indigo $version"
+
+      # Same entry point as a local build: build the solution, run the tests, publish
+      # the game (win-x64) and the session server (win-x64, linux-x64, linux-arm64) with zips.
+      - name: Build, test and package
+        shell: pwsh
+        run: pwsh -NoProfile -File src/Build.ps1 -Configuration Release
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: indigo-${{ steps.version.outputs.version }}-packages
+          path: src/out/publish/*.zip
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Indigo ${{ steps.version.outputs.version }}
+          files: src/out/publish/*.zip
+          fail_on_unmatched_files: true
+          generate_release_notes: true
